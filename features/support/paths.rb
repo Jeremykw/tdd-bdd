@@ -16,6 +16,12 @@ module NavigationHelpers
     when /^the home\s?page$/
       '/'
 
+    when /^the edit page for "Alien"$/ 
+      movie = Movie.find_by_title(:Alien)
+      "/movies/#{movie.id}/edit"
+
+    #     user_profile_path(User.find_by_login($1))
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
