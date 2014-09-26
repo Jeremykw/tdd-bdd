@@ -14,6 +14,8 @@ Rottenpotatoes::Application.routes.draw do
   #   resources :products
   resources :movies
 
+  post ':controller(/:action(/:id))'
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
