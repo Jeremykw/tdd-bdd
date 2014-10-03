@@ -1,9 +1,9 @@
 class MoviesController < ApplicationController
 
   def search_director
-    @movie = Movie.find(params[:id])
-    @director = @movie.director
-    @movies = Movie.find_all_by_director(@director)
+    #@movie = Movie.find(params[:id])
+    #@director = @movie.director
+    #@movies = Movie.find_all_by_director(@director)
   end
 
   def show

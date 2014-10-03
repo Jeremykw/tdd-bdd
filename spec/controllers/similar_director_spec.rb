@@ -19,7 +19,7 @@ describe MoviesController do
 		    )
 		FactoryGirl.create(:movie, 
 			id: 3,
-		    title: "Alien ",
+		    title: "Alien",
 		    rating: "R",
 		    director: "",
 		    release_date: "1977-05-25"
@@ -31,6 +31,24 @@ describe MoviesController do
 		    director: "George Lucas",
 		    release_date: "1971-03-1"
 		    )
+	end
+
+	describe 'search_director' do
+		it 'has finds movie in factoryGirl db' do
+			Movie.should_receive(:find_all).with(1)
+			get '/movies/search_director/1'
+			
+		end
+		it "returns a list of movies when movies with similar director exist" do
+			#movie == Movie.find(1)
+
+		end
+		it 'returns nil when no movies have Similar director' do
+
+		end
+		it "returns nil when director == '' " do
+
+		end
 	end
 
 	describe 'create movie' do
@@ -46,13 +64,6 @@ describe MoviesController do
 		end
 	end
 
-	describe 'search by director' do
-		describe MoviesController do 
-			it 'calls #search_director' do
-				movie = Movie.find(1)
-				movie.title.should == 'Star Wars'
-			end
-		end
-	end
+
 
 end
