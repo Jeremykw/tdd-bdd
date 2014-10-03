@@ -7,7 +7,6 @@ FactoryGirl.define do
     rating "PG"
     director "George Lucas"
     release_date "1977-05-25"
+
   end
-
-
 end
