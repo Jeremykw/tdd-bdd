@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MoviesController do 
+describe MoviesController, :type => :controller do 
 
 	before do
 		FactoryGirl.create(:movie, 
@@ -33,14 +33,14 @@ describe MoviesController do
 		    )
 	end
 
-	describe 'search_director' do
-		it 'has finds movie in factoryGirl db' do
-			Movie.should_receive(:find_all).with(1)
-			get '/movies/search_director/1'
-			
+	describe 'search by director' do
+		it 'has finds movie in factor' do
+			movie = Movie.find(1)
+			movie.title.should == 'Star Wars'
 		end
 		it "returns a list of movies when movies with similar director exist" do
-			#movie == Movie.find(1)
+			Movie.should_receive(:find_all).with(1)
+			post :search_director, {:id => 1}
 
 		end
 		it 'returns nil when no movies have Similar director' do
