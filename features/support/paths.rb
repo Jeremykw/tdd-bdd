@@ -22,9 +22,15 @@ module NavigationHelpers
       "/movies/#{movie.id}/edit"
 
     when /^the details page for "(.*)"$/
-    title = $1
-    movie = Movie.find_by_title(title)
-    "/movies/#{movie.id}"
+      title = $1
+      movie = Movie.find_by_title(title)
+      "/movies/#{movie.id}"
+
+    when /^the Similar Movies page for "(.*)"$/
+      title = $1
+      movie = Movie.find_by_title(title)
+      "/movies/search_director/#{movie.id}"
+
 
     #     user_profile_path(User.find_by_login($1))
 

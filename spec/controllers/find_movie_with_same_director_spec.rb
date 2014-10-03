@@ -1,11 +1,40 @@
 require 'spec_helper'
 
 describe MoviesController do 
-	before :each do
-		@movie = Movie.new
-		@movie.title = 'Star Wars'
-		@movie.director = 'George Lucas'
+	before do
+		FactoryGirl.create(:movie, 
+			id: 1,
+		    title: "Star Wars",
+		    rating: "PG",
+		    director: "Ridley Scott",
+		    release_date: "1977-05-25"
+		    )
+		FactoryGirl.create(:movie, 
+			id: 2,
+		    title: "Blade Runner",
+		    rating: "PG",
+		    director: "Ridley Scott",
+		    release_date: "1977-05-25"
+		    )
 	end
+=begin
+
+  factory :movies do
+    id "3"
+    title "Alien "
+    rating "R"
+    director ""
+    release_date "1979-05-25"
+  end
+
+  factory :movies do
+    id "4"
+    title "THX-1138"
+    rating "R"
+    director "George Lucas"
+    release_date "1971-03-11"
+  end
+=end
 	describe 'create movie' do
 		it 'creates a movie' do
 			lambda{
@@ -18,19 +47,17 @@ describe MoviesController do
 			@movie.director.should be_nil
 		end
 	end
-=begin		describe 'search by director' do
-		it 'should call modle method that searches bd for movies with similar directors' do
-			@movie.director
-			#Movie.should_receive(:find_all_by_director).with('George Lucas')
-			#post :show, {:search_director => 'George Lucas'}
-		end
-	it 'shoule return a list of the right movies' do
-			Movie.should_receive(:find_all_by_director).with('George Lucas')
-			post :search_director, {:director => 'George Lucas'}
-			# then I should see THX-1138
+	describe 'search by director' do
+		describe MoviesController do 
 
+			it 'calls #search_director' do
+				movie = Movie.find(1)
+				#movie.id.should == 1
+				movie.title.should == 'Star Wars'
+				#Movie.should_receive(:find_all_by_director).with('George Lucas')
+				#post :show, {:search_director => 'George Lucas'}
+			end
 		end
-
 	end
-=end
+
 end

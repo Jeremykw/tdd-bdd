@@ -7,7 +7,7 @@ Feature: search for movies by director
 Background: movies in database
  
   Given the following movies exist:
-  | title        | rating | gidirector     | release_date |
+  | title        | rating | director     | release_date |
   | Star Wars    | PG     | George Lucas |   1977-05-25 |
   | Blade Runner | PG     | Ridley Scott |   1982-06-25 |
   | Alien        | R      |              |   1979-05-25 |
