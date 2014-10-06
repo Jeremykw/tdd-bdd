@@ -29,7 +29,7 @@ module NavigationHelpers
     when /^the Similar Movies page for "(.*)"$/
       title = $1
       movie = Movie.find_by_title(title)
-      "/movies/search_director/#{movie.id}"
+      "/movies/similar_director/#{movie.id}"
 
 
     #     user_profile_path(User.find_by_login($1))
