@@ -3,7 +3,15 @@ class MoviesController < ApplicationController
   def similar_director
     @movie = Movie.find(params[:id])
     @director = @movie.director
-    @movies = Movie.find_all_by_director(@director)
+    #@movies = Movie.find_all_by_director(@director)
+    @movies = Movie.where("director == ? and id != ?", @director, params[:id])
+    if @movies == []
+      flash[:notice] = @movie.title
+      redirect_to movies_path
+    else
+      @movies
+    end
+
   end
 
   def show
